@@ -1,0 +1,37 @@
+# Build directories
+build/
+build_*/
+bin/
+out/
+CMakeUserPresets.json
+.cache/
+
+# IDEs and Editors
+.vscode/
+.vs/
+.idea/
+*.sln
+*.vcxproj*
+
+# OS Generated
+.DS_Store
+Thumbs.db
+
+# Executables & Libraries
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# AI Model binaries (exceeds 100MB GitHub limit)
+models/*.bin
+models/*.gguf
+*.bin
+*.gguf
+
+# Generated Subtitles & Temp Media
+*.srt
+*.wav
+*.tmp
