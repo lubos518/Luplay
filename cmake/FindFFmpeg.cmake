@@ -1,5 +1,11 @@
-# FindFFmpeg.cmake
-# Locate FFmpeg components: avformat, avcodec, swresample, avutil
+if (APPLE)
+    if (EXISTS "/opt/homebrew/lib/pkgconfig")
+        set(ENV{PKG_CONFIG_PATH} "/opt/homebrew/lib/pkgconfig:/opt/homebrew/opt/ffmpeg/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+    endif()
+    if (EXISTS "/usr/local/lib/pkgconfig")
+        set(ENV{PKG_CONFIG_PATH} "/usr/local/lib/pkgconfig:/usr/local/opt/ffmpeg/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+    endif()
+endif()
 
 find_package(PkgConfig QUIET)
 
