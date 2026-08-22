@@ -45,9 +45,11 @@ foreach(COMPONENT ${FFMPEG_COMPONENTS})
             "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include"
             "${CMAKE_PREFIX_PATH}/include"
             "A:/vcpkg/installed/x64-windows/include"
-            /usr/include 
+            /opt/homebrew/opt/ffmpeg/include
+            /opt/homebrew/include 
+            /usr/local/opt/ffmpeg/include
             /usr/local/include 
-            /opt/homebrew/include
+            /usr/include
     )
 
     find_library(FFMPEG_${COMPONENT_UPPER}_LIBRARY
@@ -57,10 +59,12 @@ foreach(COMPONENT ${FFMPEG_COMPONENTS})
             "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib"
             "${CMAKE_PREFIX_PATH}/lib"
             "A:/vcpkg/installed/x64-windows/lib"
-            /usr/lib 
-            /usr/local/lib 
-            /usr/lib/x86_64-linux-gnu 
+            /opt/homebrew/opt/ffmpeg/lib
             /opt/homebrew/lib
+            /usr/local/opt/ffmpeg/lib
+            /usr/local/lib 
+            /usr/lib 
+            /usr/lib/x86_64-linux-gnu
     )
 
     if (FFMPEG_${COMPONENT_UPPER}_INCLUDE_DIR AND FFMPEG_${COMPONENT_UPPER}_LIBRARY)

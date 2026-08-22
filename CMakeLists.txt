@@ -14,6 +14,20 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Add custom CMake module directory
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+# Support macOS Homebrew search paths (Apple Silicon & Intel)
+if (APPLE)
+    list(APPEND CMAKE_PREFIX_PATH 
+        "/opt/homebrew" 
+        "/opt/homebrew/opt/ffmpeg" 
+        "/opt/homebrew/opt/mpv"
+        "/opt/homebrew/opt/glfw"
+        "/usr/local" 
+        "/usr/local/opt/ffmpeg"
+        "/usr/local/opt/mpv"
+        "/usr/local/opt/glfw"
+    )
+endif()
+
 # Fix CUDA 13.3 + MSVC traditional preprocessor error properly
 if(MSVC)
     add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>")
