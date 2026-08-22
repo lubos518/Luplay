@@ -1,6 +1,7 @@
 #include "luplay/player.hpp"
 
 #include <iostream>
+#include <sstream>
 #include <filesystem>
 #include <GLFW/glfw3.h>
 #include "luplay/logger.hpp"

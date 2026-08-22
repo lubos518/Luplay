@@ -90,6 +90,7 @@ public:
 #endif
     }
 
+#ifdef _WIN32
     struct whisper_context* whisper_init_from_file_with_params(const char * path_model, struct whisper_context_params params) {
         return p_whisper_init_from_file_with_params(path_model, params);
     }
@@ -117,6 +118,35 @@ public:
     struct whisper_context_params whisper_context_default_params() {
         return p_whisper_context_default_params();
     }
+#else
+    struct whisper_context* whisper_init_from_file_with_params(const char * path_model, struct whisper_context_params params) {
+        return ::whisper_init_from_file_with_params(path_model, params);
+    }
+    struct whisper_full_params whisper_full_default_params(enum whisper_sampling_strategy strategy) {
+        return ::whisper_full_default_params(strategy);
+    }
+    int whisper_full(struct whisper_context * ctx, struct whisper_full_params params, const float * samples, int n_samples) {
+        return ::whisper_full(ctx, params, samples, n_samples);
+    }
+    int whisper_full_n_segments(struct whisper_context * ctx) {
+        return ::whisper_full_n_segments(ctx);
+    }
+    int64_t whisper_full_get_segment_t0(struct whisper_context * ctx, int i_segment) {
+        return ::whisper_full_get_segment_t0(ctx, i_segment);
+    }
+    int64_t whisper_full_get_segment_t1(struct whisper_context * ctx, int i_segment) {
+        return ::whisper_full_get_segment_t1(ctx, i_segment);
+    }
+    const char * whisper_full_get_segment_text(struct whisper_context * ctx, int i_segment) {
+        return ::whisper_full_get_segment_text(ctx, i_segment);
+    }
+    void whisper_free(struct whisper_context * ctx) {
+        ::whisper_free(ctx);
+    }
+    struct whisper_context_params whisper_context_default_params() {
+        return ::whisper_context_default_params();
+    }
+#endif
 
 private:
 #ifdef _WIN32
